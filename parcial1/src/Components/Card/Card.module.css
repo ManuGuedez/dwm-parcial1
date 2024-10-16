@@ -1,0 +1,44 @@
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: 3px solid #000;
+    border-radius: 15px;
+    min-width: 200px;
+    height: 275px;
+    align-self: center;
+    gap: 20px;
+    background-color: rgb(213, 213, 213);
+    border-color: rgb(213, 213, 213);
+}
+
+#title {
+    text-align: center;
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+@media (width < 450px) {
+    #title {
+        font: 20px;
+    }
+}
+
+#button {
+    width: 80%;
+    align-self: center;
+}
+
+/*  manda el contenedor al final de la card */
+.buttonContainer {
+    margin-top: auto;
+}
+
+.recipeImage {
+    display: flex;
+    justify-content: center;
+}
+
+.recipeType {
+    text-align: center;
+}
