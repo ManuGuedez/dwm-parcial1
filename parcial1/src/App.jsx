@@ -108,6 +108,7 @@ function App() {
     } else {
       console.log("No se pudo eliminar en el backend.");
     }
+    return wasDeleted;
   };
 
   const updateRecipeHandler = async (recipe) => {

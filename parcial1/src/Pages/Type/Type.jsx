@@ -8,7 +8,6 @@ function Type({ addRecipeHandler, deleteRecipeHandler }) {
   const [showModal, setShowModal] = useState(false);
   const [recipes, setRecipes] = useState([]);
   let { currentType } = useParams();
-  console.log(currentType);
   const navigate = useNavigate();
 
   async function fetchDataAW() {
@@ -22,10 +21,6 @@ function Type({ addRecipeHandler, deleteRecipeHandler }) {
       console.log("Error fetching data: ", error);
     }
   }
-
-  useEffect(() => {
-    console.log(recipes);
-  }, [recipes]);
 
   useEffect(() => {
     let recipesPromise = fetchDataAW();
@@ -43,6 +38,15 @@ function Type({ addRecipeHandler, deleteRecipeHandler }) {
     navigate("/home");
   };
 
+  const habldeDeleteRecipe = async (recipe) => {
+    const result = await deleteRecipeHandler(recipe)
+    if(result) {
+        setRecipes(recipes.filter((cRecipe) => {
+            return cRecipe.id !== recipe.id
+        }))
+    }
+  }
+
   return (
     <div>
       <header>
@@ -59,7 +63,7 @@ function Type({ addRecipeHandler, deleteRecipeHandler }) {
             <Card
               key={index}
               recipe={currentRecipe}
-              deleteRecipe={deleteRecipeHandler}
+              deleteRecipe={habldeDeleteRecipe}
             />
           );
         })}
